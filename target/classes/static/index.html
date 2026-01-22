@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="chat-container">
+    <header>WebSocket Chat 💬</header>
+
+    <ul id="log"></ul>
+
+    <div class="controls">
+        <div class="input-group">
+            <input id="usuario" placeholder="Seu apelido...">
+            <button id="btn-conectar" onclick="conectar()">Entrar</button>
+        </div>
+
+        <input id="mensagem" placeholder="Digite sua mensagem...">
+
+        <div class="input-group">
+            <button onclick="sendMensagem()" style="flex: 2;">Enviar Pública</button>
+            <input id="to" placeholder="Para quem?" style="flex: 1;">
+            <button onclick="enviarPrivado()" title="Privado">🔒</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+<script src="chat.js"></script>
+
+</body>
+</html>

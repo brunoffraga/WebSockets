@@ -1,0 +1,4 @@
+org\example\websocket\WebSocketConfig.class
+org\example\websocket\Afazer.class
+org\example\Main.class
+org\example\websocket\ChatWebSocketHandler.class

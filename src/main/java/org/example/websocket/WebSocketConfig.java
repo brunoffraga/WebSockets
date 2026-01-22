@@ -1,0 +1,27 @@
+package org.example.websocket;
+
+import org.example.domain.UserHandshakeInterceptor;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.socket.config.annotation.*;
+
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/ws")
+                .setAllowedOriginPatterns("*")
+                .addInterceptors(new UserHandshakeInterceptor())
+                .setHandshakeHandler(new CustomHandshakeHandler())
+                .withSockJS();
+    }
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registro) {
+        registro.enableSimpleBroker("/topic", "/queue");
+        registro.setApplicationDestinationPrefixes("/app");
+    }
+
+}
